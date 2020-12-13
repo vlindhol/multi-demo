@@ -1,0 +1,28 @@
+org: vlindhol
+app: multi-demo-app
+service: multi-demo-app
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  environment:
+    NODE_ENV: dev
+
+plugins:
+  - serverless-plugin-typescript 
+  - serverless-offline
+
+package:
+  exclude:
+    - config/.env.stg
+    - config/.env.pro
+  include:
+    - config/.env.dev
+
+functions:
+  textQuery:
+    handler: app/handler.textQuery
+    events:
+      - http:
+          path: text-query
+          method: post
