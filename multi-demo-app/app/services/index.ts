@@ -1,9 +1,9 @@
 import queryParsing from './queryParsing';
-import * as commands from './commands';
+import { dispatchCommand } from './commands';
 
 const services = {
   queryParsing,
-  commands,
+  dispatchCommand,
 };
 
 export type Services = typeof services;

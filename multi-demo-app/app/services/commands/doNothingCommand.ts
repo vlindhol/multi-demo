@@ -1,5 +1,5 @@
 import { Command } from ".";
 
-export const doNothingCommand: Command = {
-  run: () => '',
-};
+export const doNothingCommand = (query: string): Command => ({
+  run: () => `Got ${query}`,
+});

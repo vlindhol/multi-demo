@@ -12,7 +12,7 @@ dotenv.config({
 const textQueryFactory = (controllers: Controllers): APIGatewayProxyHandler =>
   async (event) => {
     try {
-      const result = await controllers.textQuery.parseAndRun(event.body);
+      const result = await controllers.textQuery.post(event.body);
 
       return {
         statusCode: 200,

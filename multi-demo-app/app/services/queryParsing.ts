@@ -5,7 +5,7 @@ export interface QueryParsingService {
 }
 
 const naiveParser: QueryParsingService = {
-  parseTextQuery: () => Promise.resolve(doNothingCommand),
+  parseTextQuery: (query) => Promise.resolve(doNothingCommand(query)),
 };
 
 export default naiveParser;
