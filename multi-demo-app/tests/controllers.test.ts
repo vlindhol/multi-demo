@@ -2,11 +2,16 @@ import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import textQueryControllersFactory from '../app/controllers/textQuery';
 import { Services } from '../app/services';
-import { doNothingCommand } from '../app/services/commands';
+import { Command } from '../app/services/commands';
 
 chai.use(chaiAsPromised);
 
 const expect = chai.expect;
+
+export const doNothingCommand = (query: string): Command => ({
+  _name: 'DoNothing',
+  run: () => `Got ${query}`,
+});
 
 const commandStub = doNothingCommand('stub');
 const servicesStub: Pick<Services, 'queryParsing' | 'dispatchCommand'> = {

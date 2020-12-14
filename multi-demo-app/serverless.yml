@@ -7,6 +7,8 @@ provider:
   runtime: nodejs12.x
   environment:
     NODE_ENV: production
+  apiGateway:
+    shouldStartNameWithService: true
   iamRoleStatements:
     - Effect: Allow
       Action:

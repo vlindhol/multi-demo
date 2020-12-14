@@ -1,4 +1,3 @@
-export { doNothingCommand } from './doNothingCommand';
 export { checkCityWeatherCommand } from './checkWeatherCommands';
 
 export interface Command {

@@ -14,10 +14,7 @@ export interface WeatherResponse {
 }
 
 const verifyValidWeatherResponse = (r: any): r is WeatherResponse => {
-  console.log(typeof r?.weather?.[0]?.description);
-  console.log(typeof r?.main?.temp);
-  console.log(typeof r?.main?.feels_like);
-  return typeof (r?.weather?.[0]?.description) === 'string'
+  return typeof r?.weather?.[0]?.description === 'string'
     && typeof r?.main?.temp === 'number'
     && typeof r?.main?.feels_like === 'number';
 };
@@ -32,7 +29,6 @@ export const getWeatherForCity = async (city: string): Promise<WeatherResponse> 
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(city)}&units=metric&appid=${openWeatherApiToken}`);
     if (!response.ok) throw new Error(`Got HTTP status ${response.status} when calling https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(city)}&units=metric&appid=*****`);
     responseJson = await response.json();
-    console.log(responseJson);
   } catch (err) {
     console.error('Error in getWeatherForCity:', err.message);
     throw connectionError;
