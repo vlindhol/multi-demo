@@ -17,7 +17,7 @@ const textQueryFactory = (controllers: Controllers): APIGatewayProxyHandler =>
 
       return {
         statusCode: 200,
-        body: `result is '${result}'`,
+        body: JSON.stringify({ textResponse: result}),
       };
     } catch (err) {
       return {

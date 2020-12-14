@@ -6,7 +6,7 @@ export const checkCityWeatherCommand: (repos: Pick<Repos, 'openWeather'>, city: 
   run: async () => {
     try {
       const result = await repos.openWeather.getWeatherForCity(city);
-      return `The weather in ${city} can only be described as: ${result.weather.description}. The temperature is ${result.main.temp}°C but it feels like ${result.main.feels_like}°C.`;
+      return `The weather in ${city} can only be described as: ${result.weather[0]?.description || 'unremarkable'}. The temperature is ${result.main.temp}°C but it feels like ${result.main.feels_like}°C.`;
     } catch (e) {
       let errMsg: string;
       switch (e.code) {

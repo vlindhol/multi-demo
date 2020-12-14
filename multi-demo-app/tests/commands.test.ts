@@ -10,9 +10,9 @@ chai.use(chaiAsPromised);
 const expect = chai.expect;
 
 const weatherResponseStub: WeatherResponse = {
-  weather: {
+  weather: [{
     description: 'raining cats and dogs',
-  },
+  }],
   main: {
     temp: 12,
     feels_like: -1,
@@ -37,7 +37,7 @@ describe('command objects', () => {
       const city = 'Oslo';
       const cmd = checkCityWeatherCommand(reposStub, city);
       const expectedToIncludeCity = city;
-      const expectedToIncludeWeather = weatherResponseStub.weather.description;
+      const expectedToIncludeWeather = weatherResponseStub.weather[0].description;
       const expectedToIncludeTemp = weatherResponseStub.main.temp;
       const expectedToIncludeTempFeelsLike = weatherResponseStub.main.feels_like;
 
