@@ -1,7 +1,7 @@
 import { Command } from ".";
 import { Repos } from "../../repositories";
 
-export const checkCityWeatherCommand: (repos: Repos, city: string) => Command = (repos, city) => ({
+export const checkCityWeatherCommand: (repos: Pick<Repos, 'openWeather'>, city: string) => Command = (repos, city) => ({
   _name: 'CheckCityWeather',
   run: async () => {
     try {
@@ -19,7 +19,7 @@ export const checkCityWeatherCommand: (repos: Repos, city: string) => Command = 
         default:
           errMsg = 'The person who coded me must have made a silly mistake somewhere.'
       }
-      return `I'm sorry, something went wrong. ${e.message}`;
+      return `I'm sorry, something went wrong. ${errMsg}`;
     }
   },
 });

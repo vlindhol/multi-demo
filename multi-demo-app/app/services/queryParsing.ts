@@ -1,6 +1,6 @@
 import { Repos } from "../repositories";
 import { Command, doNothingCommand } from "./commands";
-import { checkCityWeatherCommand } from "./commands/checkWeatherCommand";
+import { checkCityWeatherCommand } from "./commands/checkWeatherCommands";
 
 export interface QueryParsingService {
   parseTextQuery: (query: string) => Promise<Command>;

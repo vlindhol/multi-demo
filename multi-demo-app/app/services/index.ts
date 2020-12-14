@@ -1,10 +1,11 @@
 import queryParsing from './queryParsing';
 import { dispatchCommand } from './commands';
+import { Repos } from '../repositories';
 
-const services = {
-  queryParsing,
+const servicesFactory = (repos: Repos) => ({
+  queryParsing: queryParsing(repos),
   dispatchCommand,
-};
+});
 
-export type Services = typeof services;
-export default services;
+export type Services = ReturnType<typeof servicesFactory>;
+export default servicesFactory;

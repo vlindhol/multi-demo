@@ -20,7 +20,7 @@ const verifyValidWeatherResponse = (r: any): r is WeatherResponse => {
 };
 
 const connectionError = flaverr('CONNECTION_ERROR', new Error('Could not connect to the weather service'));
-const parsingError = flaverr('PARSE_ERROR', new Error('Could not make sense of the data returned by the weather service'));
+const parseError = flaverr('PARSE_ERROR', new Error('Could not make sense of the data returned by the weather service'));
 
 export const getWeatherForCity = async (city: string): Promise<WeatherResponse> => {
   let responseJson: unknown;
@@ -34,5 +34,5 @@ export const getWeatherForCity = async (city: string): Promise<WeatherResponse> 
     throw connectionError;
   }
   if (verifyValidWeatherResponse(responseJson)) return responseJson;
-  throw parsingError;
+  throw parseError;
 };

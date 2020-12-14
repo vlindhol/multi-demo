@@ -1,4 +1,5 @@
 export { doNothingCommand } from './doNothingCommand';
+export { checkCityWeatherCommand } from './checkWeatherCommands';
 
 export interface Command {
   _name: string; // Used for unit test assertions, don't use in production code! Follow the Command pattern!
