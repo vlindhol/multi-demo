@@ -1,11 +1,19 @@
+import { Repos } from "../repositories";
 import { Command, doNothingCommand } from "./commands";
+import { checkCityWeatherCommand } from "./commands/checkWeatherCommand";
 
 export interface QueryParsingService {
-  parseTextQuery: (text: string) => Promise<Command>;
+  parseTextQuery: (query: string) => Promise<Command>;
 }
 
-const naiveParser: QueryParsingService = {
-  parseTextQuery: (query) => Promise.resolve(doNothingCommand(query)),
-};
+type QueryParsingServiceFactory = (repos: Repos) => QueryParsingService;
 
-export default naiveParser;
+const naiveParserFactory: QueryParsingServiceFactory = (): QueryParsingService => ({
+  parseTextQuery: (query) => Promise.resolve(doNothingCommand(query)),
+});
+
+const hardCodedParserFactory: QueryParsingServiceFactory = (repos) => ({
+  parseTextQuery: () => Promise.resolve(checkCityWeatherCommand(repos, 'Helsinki')),
+});
+
+export default hardCodedParserFactory;

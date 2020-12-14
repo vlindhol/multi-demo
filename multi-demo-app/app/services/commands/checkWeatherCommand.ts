@@ -2,6 +2,7 @@ import { Command } from ".";
 import { Repos } from "../../repositories";
 
 export const checkCityWeatherCommand: (repos: Repos, city: string) => Command = (repos, city) => ({
+  _name: 'CheckCityWeather',
   run: async () => {
     try {
       const result = await repos.openWeather.getWeatherForCity(city);
