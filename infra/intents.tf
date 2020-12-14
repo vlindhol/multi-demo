@@ -9,7 +9,9 @@ resource "aws_lex_intent" "check_weather" {
 
   sample_utterances = [
     "What's the weather like in {Location}",
+    "What's the weather like in {Location} today",
     "I would like to know the weather in {Location}",
+    "I would like to know the weather in {Location} today",
   ]
 
   slot {

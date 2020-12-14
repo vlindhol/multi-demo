@@ -1,4 +1,4 @@
-resource "aws_lex_bot" "multi_demo_bot" {
+resource "aws_lex_bot" "multi_demo" {
   abort_statement {
     message {
       content_type = "PlainText"
@@ -26,7 +26,7 @@ resource "aws_lex_bot" "multi_demo_bot" {
   }
 
   locale   = "en-US"
-  name     = "CheckWeather"
-  process_behavior = "SAVE"
+  name     = "MultiDemo"
+  process_behavior = "BUILD"
   voice_id = "Salli"
 }
