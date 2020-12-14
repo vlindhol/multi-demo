@@ -7,17 +7,15 @@ provider:
   runtime: nodejs12.x
   environment:
     NODE_ENV: production
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - lex:PostText
+      Resource: 'arn:aws:lex:*'
 
 plugins:
   - serverless-plugin-typescript 
   - serverless-offline
-
-package:
-  exclude:
-    - config/.env.stg
-    - config/.env.pro
-  include:
-    - config/.env.dev
 
 functions:
   textQuery:
